@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image.Analyzer.API", "Image.Analyzer.API\Image.Analyzer.API.csproj", "{8B695361-C7F3-4662-9B48-3EEA4B139E51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image.Analyzer.Client", "Image.Analyzer.Client\Image.Analyzer.Client.csproj", "{624F82DF-D261-42B0-BC0C-78FC05AB2143}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8B695361-C7F3-4662-9B48-3EEA4B139E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B695361-C7F3-4662-9B48-3EEA4B139E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B695361-C7F3-4662-9B48-3EEA4B139E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624F82DF-D261-42B0-BC0C-78FC05AB2143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624F82DF-D261-42B0-BC0C-78FC05AB2143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624F82DF-D261-42B0-BC0C-78FC05AB2143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624F82DF-D261-42B0-BC0C-78FC05AB2143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
