@@ -15,12 +15,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
-
-namespace Image.Analyzer.API
+namespace Image.Analyzer.Function
 {
     public static class ImageAnalyzer_Function
     {
-
         static string subscriptionKey = "COMPUTER_VISION_SUBSCRIPTION_KEY";
         static string endpointKey = "COMPUTER_VISION_ENDPOINT";
 
