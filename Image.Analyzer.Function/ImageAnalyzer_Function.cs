@@ -40,7 +40,7 @@ namespace Image.Analyzer.Function
         [OpenApiParameter(name: "imageUrl", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **imageUrl** parameter")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(ImageAnalysis), Description = "The OK response")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             string imageUrl = req.Query["imageUrl"];
