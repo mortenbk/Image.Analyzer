@@ -51,7 +51,7 @@ namespace Image.Analyzer.Client
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "app/{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>
