@@ -1,3 +1,20 @@
-<input placeholder="image url" [(ngModel)]="imageUrl"/> <button (click)="analyzeImage()">Analyze</button>
-<br/>
-<div>{{analysisResult}}</div>
+<input #imageUrlInput="ngModel" placeholder="image url" style="width: auto;" [(ngModel)]="imageUrl" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"/> <button (click)="analyzeImage()">Analyze</button>
+<div style="color:red" *ngIf="imageUrlInput.invalid && (imageUrlInput.dirty || imageUrlInput.touched)">Invalid Url</div>
+<div style="position: relative;">
+    <div style="float: left; width: 50%;">
+        <div style="font-weight: bold;">Categories: </div>
+        <div *ngFor="let category of analysisResult.categories">
+            {{category.name}}
+        </div>
+        <br/>
+        <div style="font-weight: bold;">Tags:</div> 
+        <div *ngFor="let tag of analysisResult.tags">
+            {{tag.name}}
+        </div>
+    </div>
+
+    <div style="float: right;width: 50%;" *ngIf="imageUrlInput.valid">
+        <img [src]="imageUrl"/>
+    </div>
+
+</div>
