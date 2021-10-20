@@ -52,6 +52,9 @@ namespace Image.Analyzer.API
             var key = Environment.GetEnvironmentVariable(subscriptionKey);
             var endpoint = Environment.GetEnvironmentVariable(endpointKey);
 
+            log.Log(LogLevel.Debug, $"COMPUTER_VISION_SUBSCRIPTION_KEY: {key}");
+            log.Log(LogLevel.Debug, $"COMPUTER_VISION_ENDPOINT: {endpoint}");
+
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
                 throw new InvalidDataException("The supplied url for the image is not a valid url.");
