@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Function App ImageAnalyzerAPI20211018183428
+name: Build and deploy .NET Core application to Function App ImageAnalyzerAPI20211018183428 with API Management Service ImageAnalyzerAPIapi-ImageAnalyzerAPI
 on:
   push:
     branches:
@@ -10,6 +10,11 @@ env:
   DOTNET_CORE_VERSION: 3.1.x
   WORKING_DIRECTORY: Image.Analyzer.API
   DOTNET_CORE_VERSION_INPROC: ''
+  AZURE_APIM_RESOURCEGROUP: image_analyzer
+  AZURE_APIM_SERVICENAME: ImageAnalyzerAPIapi
+  AZURE_APIM_API_ID: ImageAnalyzerAPI
+  AZURE_APIM_RESOURCE_PATH: /
+  AZURE_APIM_SWAGGERURL: https://imageanalyzerapi20211018183428.azurewebsites.net/api/swagger.json
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -35,3 +40,9 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         publish-profile: ${{ secrets.IMAGEANALYZERAPI20211018183428_FFFF }}
         package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.ImageAnalyzerAPIapi_SPN }}
+    - name: Import API into Azure API Management
+      run: az apim api import --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" --resource-group ${{ env.AZURE_APIM_RESOURCEGROUP }} --service-name ${{ env.AZURE_APIM_SERVICENAME }} --api-id ${{ env.AZURE_APIM_API_ID }} --specification-url "${{ env.AZURE_APIM_SWAGGERURL }}" --specification-format OpenApi --subscription-required false
