@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { ImageAnalysis, MachineLearningService } from '../openapi';
 import _ from "lodash";
@@ -9,6 +10,7 @@ import _ from "lodash";
 export class ImageAnalyzerComponent {
   public imageUrl: string = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/VAN_CAT.png/220px-VAN_CAT.png";
   public analysisResult: ImageAnalysis = {};
+  public busy: boolean = false;
 
   /**
    *
@@ -18,9 +20,15 @@ export class ImageAnalyzerComponent {
 
   public analyzeImage()
   {
+    this.busy = true;
     this.apiGateway.run(this.imageUrl).subscribe((analysis) => 
     {
       this.analysisResult = analysis;
+      this.busy = false;
+
+    }, (err) => 
+    {
+      this.busy = false;
     });
   }
   

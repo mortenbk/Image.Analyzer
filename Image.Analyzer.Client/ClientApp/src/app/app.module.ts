@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ApiModule, Configuration, ConfigurationParameters } from './openapi';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material';
+
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -28,11 +31,13 @@ export function apiConfigFactory (): Configuration {
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'imageanalyzer', component: ImageAnalyzerComponent },
     ]),
-    ApiModule.forRoot(apiConfigFactory)
+    ApiModule.forRoot(apiConfigFactory),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

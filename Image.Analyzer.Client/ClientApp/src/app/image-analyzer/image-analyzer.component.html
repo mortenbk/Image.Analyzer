@@ -2,6 +2,7 @@
 <div style="color:red" *ngIf="imageUrlInput.invalid && (imageUrlInput.dirty || imageUrlInput.touched)">Invalid Url</div>
 <div style="position: relative;">
     <div style="float: left; width: 50%;">
+        
         <div style="font-weight: bold;">Categories: </div>
         <div *ngFor="let category of analysisResult.categories">
             {{category.name}}
@@ -18,3 +19,5 @@
     </div>
 
 </div>
+
+<mat-spinner style="width: 100%;" *ngIf="busy"></mat-spinner>
